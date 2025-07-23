@@ -7,7 +7,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Scanner;
+//import java.util.Scanner;
+import craftinginterpreters.lox.entity.scanner.Scanner;
+import craftinginterpreters.lox.entity.token.Token;
 
 public class Lox {
     static InputStreamReader input = new InputStreamReader(System.in);
@@ -47,9 +49,10 @@ public class Lox {
     /** Execute code **/
     private static void run(String source){
         Scanner scanner = new Scanner(source);
-        List<String> tokens = scanner.tokens().toList();
-        for(String token : tokens){
-            System.out.println(token);
+//        List<String> tokens = scanner.tokens().toList();
+        List<Token> tokens = scanner.scanTokens();
+        for(Token token : tokens){
+            System.out.println(token.toString());
         }
     }
 
